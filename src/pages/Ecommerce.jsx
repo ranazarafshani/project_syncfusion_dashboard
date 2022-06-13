@@ -10,6 +10,8 @@ import {
     SparklineAreaData, ecomPieChartData
 } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
+import product9 from '../data/product9.jpg';
+
 
 const Ecommerce = () => {
     return (
@@ -108,6 +110,209 @@ const Ecommerce = () => {
                             <Stacked
                                 width="320px"
                                 height="360px"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div style={{ backgroundColor: "blue" }} className="rounded-2xl md:w-400 p-4 m-3">
+                        <div className='flex justify-between items-center '>
+                            <p className='text-2xl font-semibold text-white'>Earning</p>
+                            <div>
+                                <p className='text-white text-2xl font-semibold mt-8'>$63,448.78</p>
+                                <p className='text-gray-200'>Monthly revenue</p>
+                            </div>
+                        </div>
+                        <div className='mt-4'>
+                            <SparkLine
+                                height="100px"
+                                width="320px"
+                                id="column-sparkLine"
+                                data={SparklineAreaData}
+                                type="Column"
+                                color="rgb(242, 252, 253)"
+                                currentColor="blue"
+                            />
+                        </div>
+                    </div>
+                    <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounde-2xl md:w-400 p-8 m-3
+                    flex justify-center items-center gap-10'>
+                        <div>
+                            <p className='text-2xl font-semibold'>$43,246</p>
+                            <p className='text-gray-400'>Yearly sales</p>
+                        </div>
+                        <div className='w-40'>
+                            <Pie id="pie-chart" data={ecomPieChartData} legendVisiblity={false} height="160px" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className='flex flex-wrap justify-center gap-10 m-4'>
+                <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6'>
+                    <div className='flex items-center justify-between gap-2'>
+                        <p className='font-semibold text-xl'>Recent Transactions</p>
+                        <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
+                            <DropDownListComponent id="time" dataSource={dropdownData} style={{ border: 'none' }} fields={{ text: 'Time', value: 'Id' }} value="1" popupHeight="220px" popupWidth="120px" />
+                        </div>
+                    </div>
+                    <div className="mt-10 w-72 md:w-400">
+                        {recentTransactions.map((item) => (
+                            <div key={item.title} className="flex justify-between mt-4">
+                                <div className='flex items-center gap-2'>
+                                    <button
+                                        type='button'
+                                        className="p-4 hover:drop-shadow-xl rounded-lg text-2xl"
+                                        style={{ color: item.iconColor, backgroundColor: item.iconBg }}
+                                    >
+                                        {item.icon}
+                                    </button>
+                                    <div>
+                                        <p className='text-md font-semibold'>{item.title}</p>
+                                        <p className='text-gray-400 text-sm'>{item.desc}</p>
+                                    </div>
+                                </div>
+                                <p className={`text-${item.pcColor} `}>{item.amount}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className='border-t-1 border-color flex justify-between items-center mt-5 pt-4'>
+                        <Button
+                            bgColor="blue"
+                            borderRadius="10px"
+                            size="md"
+                            color="white"
+                            text="Add"
+                        />
+                        <p className='text-gray-400 text-sm'>36 Recent Transaction</p>
+                    </div>
+                </div>
+                <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 w-96 md:w-760'>
+                    <div className='flex items-center justify-between gap-2 mb-10'>
+                        <p className='font-semibold text-xl'>Sales Overview</p>
+                        <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
+                            <DropDownListComponent id="time" dataSource={dropdownData} style={{ border: 'none' }} fields={{ text: 'Time', value: 'Id' }} value="1" popupHeight="220px" popupWidth="120px" />
+                        </div>
+                    </div>
+                    <div className='md:w-full overflow-auto'>
+                        <LineChart />
+                    </div>
+                </div>
+            </div>
+
+            <div className='flex flex-wrap justify-center'>
+                <div className='md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3'>
+                    <div className='flex items-center justify-between gap-2'>
+                        <p className='font-semibold text-xl'>Weekly States</p>
+                        <button type="button" className="text-xl font-semibold text-gray-500">
+                            <IoIosMore />
+                        </button>
+                    </div>
+                    <div className="mt-10">
+                        {weeklyStats.map((item) => (
+                            <div key={item.title} className='flex justify-between w-full mt-4 gap-2'>
+                                <div className='flex gap-4'>
+                                    <button
+                                        type='button'
+                                        className="p-3 hover:drop-shadow-xl rounded-full text-2xl text-white"
+                                        style={{ backgroundColor: item.iconBg }}
+                                    >
+                                        {item.icon}
+                                    </button>
+                                    <div>
+                                        <p className='text-md font-semibold'>{item.title}</p>
+                                        <p className='text-gray-400 text-sm'>{item.desc}</p>
+                                    </div>
+                                </div>
+                                <p className={`text-${item.pcColor} `}>{item.amount}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div>
+                        <SparkLine
+                            currentColor="blue"
+                            id="area-sparkLine"
+                            type="Area"
+                            height="160px"
+                            width="320px"
+                            data={SparklineAreaData}
+                            color="rgb(242, 252, 253)" />
+                    </div>
+                </div>
+
+                <div className='w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3'>
+                    <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6'>
+                        <div className='flex items-center justify-between gap-2'>
+                            <p className='font-semibold text-xl'>MedicalPro Branding</p>
+                            <button type="button" className="text-xl font-semibold text-gray-500">
+                                <IoIosMore />
+                            </button>
+                        </div>
+                        <p className="text-xs cursor-pointer hover:drop-shadow-xl font-semibold rounded-lg w-24 bg-orange-400 py-0.5 px-2 text-gray-200 mt-10">
+                            16 APR, 2021
+                        </p>
+                        <div className='flex gap-4 border-b-1 border-color mt-6'>
+                            {medicalproBranding.data.map((item) => (
+                                <div key={(item.title)} className='border-r-1 border-color pr-4 pb-2'>
+                                    <p className='text-gray-400 text-xs'>{item.title}</p>
+                                    <p className='text-sm'>{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="border-b-1 border-color pb-4 mt-2">
+                            <p className="text-md font-semibold mb-2">Teams</p>
+                            <div className='flex gap-4'>
+                                {medicalproBranding.teams.map((item) => (
+                                    <p
+                                        key={item.name}
+                                        style={{ background: item.color }}
+                                        className="cursor-pointer hover:drop-shadow-xl text-white py-0.5 px-3 rounded-lg text-xs"
+                                    > {item.name}</p>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="mt-2">
+                            <p className="text-md font-semibold mb-2">Leaders</p>
+                            <div className='flex gap-4'>
+                                {medicalproBranding.leaders.map((item) => (
+                                    <img key={item.image} src={item.image} className="rounded-full w-8 h-8" />
+                                ))}
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center mt-5 border-t-1 border-color">
+                            <div className="mt-3">
+                                <Button
+                                    bgColor="blue"
+                                    borderRadius="10px"
+                                    size="md"
+                                    color="white"
+                                    text="Add"
+                                />
+                            </div>
+                            <p className='text-gray-400 text-sm'>36 Recent Transaction</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3'>
+                    <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6'>
+                        <div className='flex items-center justify-between gap-2'>
+                            <p className='font-semibold text-xl'>Daily Activities</p>
+                            <button type="button" className="text-xl font-semibold text-gray-500">
+                                <IoIosMore />
+                            </button>
+                        </div>
+                        <img src={product9} className="md:w-96 h-50 mt-10" />
+                        <p className='font-semibold mt-8 text-lg'>React 18 coming soon!</p>
+                        <p className='text-gray-400'>By Johnathan Doe</p>
+                        <p className='text-gray-400 text-sm mt-8'>This will be the small description for the news you have shown here. There could be some great info.</p>
+                        <div className="mt-3">
+                            <Button
+                                bgColor="blue"
+                                borderRadius="10px"
+                                size="md"
+                                color="white"
+                                text="Read More"
                             />
                         </div>
                     </div>
