@@ -14,6 +14,8 @@ import product9 from '../data/product9.jpg';
 
 
 const Ecommerce = () => {
+    const { currentColor } = useStateContext();
+
     return (
         <div className="mt-12">
             <div className="flex flex-wrap lg:flex-nowrap justify-center">
@@ -28,7 +30,7 @@ const Ecommerce = () => {
                     <div className="mt-6">
                         <Button
                             color="white"
-                            bgColor="blue"
+                            bgColor={currentColor}
                             text="Download"
                             borderRadius="10px"
                             size="md"
@@ -88,17 +90,17 @@ const Ecommerce = () => {
                             </div>
                             <div className="mt-5">
                                 <SparkLine
-                                    currentColor="blue"
+                                    currentColor={currentColor}
                                     id="line-sparkLine"
                                     type="Line"
                                     height="80px"
                                     width="250px"
                                     data={SparklineAreaData}
-                                    color="blue" />
+                                    color={currentColor} />
                             </div>
                             <div className='mt-10'>
                                 <Button
-                                    bgColor="blue"
+                                    bgColor={currentColor}
                                     color="white"
                                     size="md"
                                     borderRadius="10px"
@@ -115,7 +117,7 @@ const Ecommerce = () => {
                     </div>
                 </div>
                 <div>
-                    <div style={{ backgroundColor: "blue" }} className="rounded-2xl md:w-400 p-4 m-3">
+                    <div style={{ backgroundColor: currentColor }} className="rounded-2xl md:w-400 p-4 m-3">
                         <div className='flex justify-between items-center '>
                             <p className='text-2xl font-semibold text-white'>Earning</p>
                             <div>
@@ -131,7 +133,7 @@ const Ecommerce = () => {
                                 data={SparklineAreaData}
                                 type="Column"
                                 color="rgb(242, 252, 253)"
-                                currentColor="blue"
+                                currentColor={currentColor}
                             />
                         </div>
                     </div>
@@ -178,7 +180,7 @@ const Ecommerce = () => {
                     </div>
                     <div className='border-t-1 border-color flex justify-between items-center mt-5 pt-4'>
                         <Button
-                            bgColor="blue"
+                            bgColor={currentColor}
                             borderRadius="10px"
                             size="md"
                             color="white"
@@ -230,7 +232,7 @@ const Ecommerce = () => {
                     </div>
                     <div>
                         <SparkLine
-                            currentColor="blue"
+                            currentColor={currentColor}
                             id="area-sparkLine"
                             type="Area"
                             height="160px"
@@ -282,7 +284,7 @@ const Ecommerce = () => {
                         <div className="flex justify-between items-center mt-5 border-t-1 border-color">
                             <div className="mt-3">
                                 <Button
-                                    bgColor="blue"
+                                    bgColor={currentColor}
                                     borderRadius="10px"
                                     size="md"
                                     color="white"
@@ -308,7 +310,7 @@ const Ecommerce = () => {
                         <p className='text-gray-400 text-sm mt-8'>This will be the small description for the news you have shown here. There could be some great info.</p>
                         <div className="mt-3">
                             <Button
-                                bgColor="blue"
+                                bgColor={currentColor}
                                 borderRadius="10px"
                                 size="md"
                                 color="white"
