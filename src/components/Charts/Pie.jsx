@@ -7,11 +7,16 @@ import {
 import { useStateContext } from '../../contexts/ContextProvider';
 
 const Pie = ({ id, data, legendVisiblity, height }) => {
+    const { currentMode } = useStateContext();
     return (
         <AccumulationChartComponent
             id={id}
-            legendSettings={{ visible: legendVisiblity, background: 'white' }}
+            legendSettings={{
+                visible: legendVisiblity, background: 'white', position: "Top"
+            }}
             height={height}
+            background={currentMode === 'Dark' ? '#33373E' : '#fff'
+            }
             tooltip={{ enable: true }}
         >
             <Inject services={[PieSeries, AccumulationTooltip, AccumulationDataLabel, AccumulationLegend]} />
